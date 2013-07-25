@@ -12,4 +12,6 @@ LOCAL_SRC_FILES := ping6.c ping_common.c
 LOCAL_MODULE := ping6
 LOCAL_C_INCLUDES := external/openssl/include
 LOCAL_SHARED_LIBRARIES := libcrypto
+LOCAL_STATIC_LIBRARIES := libcutils libc
+LOCAL_CFLAGS += -fno-strict-aliasing
 include $(BUILD_EXECUTABLE)

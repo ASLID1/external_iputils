@@ -492,7 +492,7 @@ main(int argc, char **argv)
 
 	/* record route option */
 	if (options & F_RROUTE) {
-		memset(rsp.rspace, sizeof(rsp.rspace));
+		memset(rsp.rspace, 0, sizeof(rsp.rspace));
 		rsp.rspace[0] = IPOPT_NOP;
 		rsp.rspace[1+IPOPT_OPTVAL] = IPOPT_RR;
 		rsp.rspace[1+IPOPT_OLEN] = sizeof(rsp.rspace)-1;
@@ -504,7 +504,7 @@ main(int argc, char **argv)
 		}
 	}
 	if (options & F_TIMESTAMP) {
-		memset(rsp.rspace, sizeof(rsp.rspace));
+		memset(rsp.rspace, 0, sizeof(rsp.rspace));
 		rsp.rspace[0] = IPOPT_TIMESTAMP;
 		rsp.rspace[1] = (ts_type==IPOPT_TS_TSONLY ? 40 : 36);
 		rsp.rspace[2] = 5;
@@ -526,7 +526,7 @@ main(int argc, char **argv)
 	}
 	if (options & F_SOURCEROUTE) {
 	        int i;
-		memset(rsp.rspace, sizeof(rsp.rspace));
+		memset(rsp.rspace, 0, sizeof(rsp.rspace));
 		rsp.rspace[0] = IPOPT_NOOP;
 		rsp.rspace[1+IPOPT_OPTVAL] = (options & F_SO_DONTROUTE) ? IPOPT_SSRR
 			: IPOPT_LSRR;
